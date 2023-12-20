@@ -16,24 +16,24 @@ public class ControllerUser {
     @Autowired(required = true)
     public UserRepository userRepository;
 
-    @Autowired
-    private PostRepository postRepository;
+//    @Autowired
+//    private PostRepository postRepository;
     @GetMapping
     public ResponseEntity getAllusers(){
         var allusers = userRepository.findAll();
         return ResponseEntity.ok(allusers);
     }
-    @GetMapping("/{userId}/posts")
-    public ResponseEntity<List<Post>> getPostsByUser(@PathVariable Long userId){
-        Optional<User> userOptional = userRepository.findById(userId);
-        if (userOptional.isPresent()){
-            User user = userOptional.get();
-            List<Post> posts = postRepository.findByUser(user);
-            return ResponseEntity.ok(posts);
-        }else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+//    @GetMapping("/{userId}/posts")
+//    public ResponseEntity<List<Post>> getPostsByUser(@PathVariable (value="userId) Long userId){
+//        Optional<User> userOptional = userRepository.findById(userId);
+//        if (userOptional.isPresent()){
+//            User user = userOptional.get();
+//            List<Post> posts = postRepository.findByUser(user);
+//            return ResponseEntity.ok(posts);
+//        }else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
     @PostMapping
     public ResponseEntity<String> registeruser(@RequestBody User user){
         if (user ==null || user.getName()==null || user.getUsername()==null||user.getSenha()==null ){

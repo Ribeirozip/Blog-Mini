@@ -24,9 +24,9 @@ public class Post {
     private String conteudo_post;
 //    @CreationTimestamp
 //    private LocalDateTime criacao_post;
-   @ManyToOne
-    @JoinColumn(name ="user_id")
-    private User user;
+//   @ManyToOne
+//    @JoinColumn(name ="user_id")
+//    private User user;
 
 
 }

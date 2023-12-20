@@ -21,7 +21,7 @@ public class User {
     @CreationTimestamp
     private LocalDateTime createAt;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    private List<Post> posts;
+//    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+//    private List<Post> posts;
 
 }
