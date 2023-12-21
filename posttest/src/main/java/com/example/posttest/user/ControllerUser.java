@@ -16,15 +16,17 @@ public class ControllerUser {
     @Autowired(required = true)
     public UserRepository userRepository;
 
+    //passivel de erro
 //    @Autowired
 //    private PostRepository postRepository;
     @GetMapping
-    public ResponseEntity getAllusers(){
+    public ResponseEntity getAlluser(){
         var allusers = userRepository.findAll();
         return ResponseEntity.ok(allusers);
     }
+    //passivel de erro
 //    @GetMapping("/{userId}/posts")
-//    public ResponseEntity<List<Post>> getPostsByUser(@PathVariable (value="userId) Long userId){
+//    public ResponseEntity<List<Post>> getPostsByUser(@PathVariable (value="userId) Long userId)){
 //        Optional<User> userOptional = userRepository.findById(userId);
 //        if (userOptional.isPresent()){
 //            User user = userOptional.get();
@@ -49,10 +51,10 @@ public class ControllerUser {
     }
     @PutMapping("/")
     public ResponseEntity<String> updateuser(@RequestBody User user){
-        if (user.getIdUser()==null){
+        if (user.getId_user()==null){
             return ResponseEntity.badRequest().body("Id de user é obrigatorio");
         }
-        Optional<User> existingUser =userRepository.findById(user.getIdUser());
+        Optional<User> existingUser =userRepository.findById(user.getId_user());
 
         if (existingUser.isPresent()) {
             User userToUpdate = existingUser.get();
@@ -73,9 +75,9 @@ public class ControllerUser {
             return ResponseEntity.badRequest().body("ID de user é obrigatorio");
         }
             System.out.println("Tentativa de excluir post com ID:" + userDel);
-            Optional<User> existingUser = userRepository.findById(userDel.getIdUser());
+            Optional<User> existingUser = userRepository.findById(userDel.getId_user());
             if (existingUser.isPresent()){
-                userRepository.deleteById(userDel.getIdUser());
+                userRepository.deleteById(userDel.getId_user());
                 return ResponseEntity.ok("User Excluido com sucesso.");
             }else {
                 return new ResponseEntity<>("User nao encontrado, Excluir falhou.",HttpStatus.NOT_FOUND);

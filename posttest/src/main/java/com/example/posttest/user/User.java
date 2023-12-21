@@ -2,25 +2,30 @@ package com.example.posttest.user;
 
 import com.example.posttest.post.Post;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
-@Entity(name ="tb_users")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name ="user_db")
+@Entity(name ="user_db")
+@EqualsAndHashCode(of ="id_user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUser;
-    @Column(unique = true)
+    private Long id_user;
     private String name;
     private String username;
     private String senha;
-    @CreationTimestamp
-    private LocalDateTime createAt;
+//    @CreationTimestamp
+//    private LocalDateTime createAt;
 
+    //passivel de erro
 //    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 //    private List<Post> posts;
 
